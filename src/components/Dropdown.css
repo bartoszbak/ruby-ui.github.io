@@ -1,0 +1,107 @@
+
+
+.dropdown-label {
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.01rem;
+  font-weight: 500;
+  font-size: 11px;
+  color: rgba(46, 44, 42, 0.6);
+}
+
+.dropdown-btn {
+    position: relative;
+    display: inline-block;
+  }
+    
+
+  .dropdown-toggle:focus-visible{
+    outline-offset: 2px;
+    outline: 2px solid #067681;
+  }
+  
+  .dropdown-toggle {
+    transition: all 0.16s ease;
+    padding: 8px 8px 8px 12px;
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    line-height: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .dropdown-toggle span{
+    padding:0;
+    margin: 0;
+    height: 20px;
+    width: 20px;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    min-width: max-content;
+    margin-top: 5px;
+    padding: 2px 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.16s cubic-bezier(0.47, 0, 0.23, 1.38), transform 0.16s cubic-bezier(0.47, 0, 0.23, 1.38);
+  }
+  
+
+  
+
+  .dropdown-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .dropdown-menu.closing {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  
+  .dropdown-item {
+    transition: all 0.16s ease;
+    padding: 4px 8px;
+    display: block;
+    font-weight: 500;
+    font-size: 13px;
+    text-decoration: none;
+    color: rgb(46, 44, 42);
+    margin: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+  }
+
+  .dropdown-item:focus-visible{
+    outline-offset: 0px;
+    outline: 2px solid #067681;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }

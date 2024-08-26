@@ -1,0 +1,34 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+    padding: 0.25rem;
+  }
+  
+  .grid-item {
+    height: 14rem; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+
+    border-radius: 5px;
+  }
+  
+  @media (max-width: 1024px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+    }
+  }

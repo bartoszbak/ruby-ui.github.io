@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Grid from './components/Grid';
+import Button from './components/Button'; 
+import Dropdown from './components/Dropdown';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="component-showcase">
+      <Grid>
+        <Button className="size-s solid" label="New appointment" />
+        <Button className="size-n solid" label="Select file" />
+        <Button className="size-b solid" label="Continue" />
+        <Button className="size-s soft" label="New appointment" />
+        <Button className="size-n soft" label="Select file" />
+        <Button className="size-b soft" label="Continue" />
+        <Dropdown dropdownLabel="What do you seek" label="Choose one option">
+          <option value="1">Wellness</option>
+          <option value="2">Emotional support</option>
+          <option value="3">A hug</option>
+      </Dropdown>
+      </Grid>
     </div>
   );
 }
