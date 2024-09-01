@@ -1,0 +1,74 @@
+.multiSelect{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 12px 16px 12px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    width: ;
+}
+
+.multiSelect label{
+    flex: 1;
+    font-size: 13px;
+    letter-spacing: 0.024rem;
+    color: rgba(46, 44, 42, 0.6);
+    line-height: 100%;
+    pointer-events: none;
+    margin-bottom: 12px;
+}
+
+.multiSelect .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.42rem;
+  }
+  
+  .multiSelect .pill {
+    text-decoration: none;
+    flex: 0 1 auto;
+    padding: 8px 12px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 100%;
+    border-radius: 100px;
+    background-color: rgba(0,0,0,0.08);
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.16s;
+  } 
+
+  .multiSelect .pill:focus-visible{
+    outline-offset: 2px;
+    outline: 2px solid #461E36  ;
+  }
+  
+    .multiSelect .pill.selected {
+        background-color:#461E36;
+        color: #fff;
+    }
+    
+    .multiSelect .pill:hover {
+        color: #fff;
+        background-color:#461E36;
+    }
+
+  .singleSelect .pill{
+    background-color: #fff;
+    color: #000000;
+    border: 2px solid rgba(0,0,0,0.1); 
+  }
+
+  .singleSelect .pill.selected:focus-visible{
+    outline-offset: 2px;
+    outline: 2px solid #461E36  ;
+  }
+
+    .singleSelect .pill:hover,
+    .singleSelect .pill.selected {
+        background: none;
+        color: #000;
+        border: 2px solid #461E36;
+    }

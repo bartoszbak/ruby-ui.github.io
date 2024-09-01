@@ -3,57 +3,155 @@
     cursor: pointer;
     border: none;
     transition: all 0.16s ease;
-    line-height: 120%;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.02rem;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     border-radius: 8px;
   }
 
-  .btn.solid{
-    background-color: #461E36;
-    border: 1px solid rgba(0,0,0,0.1);
-    color: #fff;
+  .btn .label{
+    line-height: 120%;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
   }
 
-  .btn:focus-visible{
-    outline-offset: 2px;
-    outline: 2px solid #067681;
+.icon-label{
+  max-height: none;
+  min-height: fit-content;
+  display: flex;
+  line-height: 100%;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  box-shadow: none;
+  gap: 0.25rem;
+}
 
+  .icon-label .icon{
+    display: inherit; 
   }
 
-  .btn:active{
-    /* transform: translateY(1px); */
-    transform: scale(0.98);
-  }
+.icon{
+  max-height: none;
+  min-height: fit-content;
+  display: flex;
+  line-height: 100%;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  box-shadow: none;
+  gap: 0.25rem;
+}
+
+/* Button type Soild / Soft */
+
+.btn.solid{
+  background-color: #461E36;
+  border: 1px solid rgba(0,0,0,0.1);
+  color: #fff;
+}
+
+.btn.soft{
+  background-color: #ffffff;
+  border: 1px solid rgba(0,0,0,0.1);
+  color: rgb(46, 44, 42);
+}
+
+/* Button states */
+
+.btn:focus-visible{
+  outline-offset: 2px;
+  outline: 2px solid #461E36  ;
+}
+
+.btn:active{
+  /* transform: translateY(1px); */
+  transform: scale(0.98);
+  border: 1px solid rgba(0,0,0,0.24);
+}
+
+.btn.solid:hover {
+  background-color: #FFA398;
+}
+
+.btn.solid:active{
+  border: 1px solid rgba(0,0,0,0.24);
+}
+
+.btn.soft:hover {
+  border: 1px solid rgba(0,0,0,0.24);
+}
+
+.btn.soft:active{
+  border: 1px solid rgba(0,0,0,0.24);
+}
+
+.icon:hover,
+.icon-label:hover{
+  background-color: rgba(0,0,0,0.04);
+}
+
+.icon:active,
+.icon-label:active{
+  border: none
+}
+
+
+/* Button size */
+
+.btn.size-s,
+.icon-label.size-s{
+  padding: 4px 8px;
+  min-height: 32px;
+}
   
-  .btn:hover {
-    background-color: #FFA398;
+  .icon.size-s svg,
+  .icon-label.size-s svg{
+    height: 20px;
+    width: 20px;
   }
 
-
-
-  .btn.soft{
-    background-color: #ffffff;
-    border: 1px solid rgba(0,0,0,0.1);
-    color: rgb(46, 44, 42);
-  }
-
-  .btn.size-s{
-    
-    padding: 4px 8px;
-    min-height: 24px;
-  }
-
-  .btn.size-n{
-    
-    padding: 8px 12px;
+  .icon.size-s{
+    padding: 4px;
     min-height: 32px;
+    min-width: 32px;
   }
 
-  .btn.size-b{
-    
-    padding: 12px 16px;
-    min-height: 40px;
+.btn.size-n,
+.icon-label.size-n{
+  padding: 8px 12px;
+  min-height: 32px;
+}
+
+  .icon.size-n svg,
+  .icon-label.size-n svg{
+    height: 20px;
+    width: 20px;
   }
+
+  .icon.size-n{
+    padding: 8px;
+  }
+
+.btn.size-b,
+.icon-label.size-b{
+  padding: 12px 16px;
+  min-height: 40px;
+  gap: 8px;
+}
+
+  .icon.size-b svg,
+  .icon-label.size-b svg{
+    height: 20px;
+    width: 20px;
+  }
+
+  .icon.size-b{
+    padding: 12px;
+  }
+

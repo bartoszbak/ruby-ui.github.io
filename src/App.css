@@ -1,13 +1,12 @@
 *{
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-/* p-default */
-font-family: 'Inter Variable';
+font-family: 'Inter Variable', -apple-system, sans-serif;
 font-style: normal;
 font-weight: 500;
 font-size: 13px;
 line-height: 135%;
 font-variation-settings: 'opsz' 32;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
 
 .App {
