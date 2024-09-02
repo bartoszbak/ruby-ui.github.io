@@ -7,7 +7,7 @@
     border-radius: 10px;
     box-sizing: border-box;
     margin-bottom: 1rem;
-    width: ;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
 .multiSelect label{
@@ -29,12 +29,13 @@
   .multiSelect .pill {
     text-decoration: none;
     flex: 0 1 auto;
-    padding: 8px 12px;
+    padding: 6px 10px;
+    line-height: 100%;
     font-size: 15px;
     font-weight: 500;
     line-height: 100%;
     border-radius: 100px;
-    background-color: rgba(0,0,0,0.08);
+    border: 2px solid rgba(0,0,0,0.1); 
     color: #000000;
     cursor: pointer;
     transition: all 0.16s;
@@ -44,21 +45,18 @@
     outline-offset: 2px;
     outline: 2px solid #461E36  ;
   }
-  
+
+    .multiSelect .pill:hover,
     .multiSelect .pill.selected {
-        background-color:#461E36;
-        color: #fff;
-    }
-    
-    .multiSelect .pill:hover {
-        color: #fff;
-        background-color:#461E36;
+        background: none;
+        color: #000;
+        border: 2px solid #461E36;
     }
 
   .singleSelect .pill{
-    background-color: #fff;
+    background-color: rgba(0,0,0,0.08);
     color: #000000;
-    border: 2px solid rgba(0,0,0,0.1); 
+    border: none;
   }
 
   .singleSelect .pill.selected:focus-visible{
@@ -68,7 +66,7 @@
 
     .singleSelect .pill:hover,
     .singleSelect .pill.selected {
-        background: none;
-        color: #000;
-        border: 2px solid #461E36;
+        color: #fff;
+        background-color:#461E36;
+        border: none;
     }
