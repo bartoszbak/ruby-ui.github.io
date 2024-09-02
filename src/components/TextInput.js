@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TextInput.css'; // Assuming you save the CSS in this file
 
-const TextInput = ({ label, id, className, placeholder, type = 'text' }) => {
+const TextInput = ({ label, id, className, placeholder, name, type = 'text', autocomplete }) => {
   const [value, setValue] = useState('');
 
   const handleChange = (e) => {
@@ -16,6 +16,8 @@ const TextInput = ({ label, id, className, placeholder, type = 'text' }) => {
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        autocomplete={autocomplete}
+        name={name}
         required
       />
       <label htmlFor={id} className={value ? 'filled' : ''}>
