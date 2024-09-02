@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Dropdown.css';
 
-const Dropdown = ({ dropdownLabel, label, children }) => {
+const Dropdown = ({ dropdownLabel, label, children, className }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isFullyOpen, setIsFullyOpen] = useState(false);
@@ -88,7 +88,7 @@ const Dropdown = ({ dropdownLabel, label, children }) => {
   }, [isOpen]);
 
   return (
-    <div ref={dropdownRef} className={`dropdown ${isFullyOpen ? 'open' : ''}`}>
+    <div ref={dropdownRef} className={`${className} dropdown ${isFullyOpen ? 'open' : ''}`}>
       {dropdownLabel && <label className="dropdown-label">{dropdownLabel}</label>}
       <div className="dropdown-btn">
 

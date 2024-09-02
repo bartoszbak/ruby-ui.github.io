@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Grid from './components/Grid';
 import Button from './components/Button'; 
 import Dropdown from './components/Dropdown';
+import MultiSelect from './components/MultiSelect';
+import TextInput from './components/TextInput';
 
 function ComponentList() {
   return (
@@ -35,9 +37,17 @@ function ComponentList() {
 
             <Button className="size-b icon" label=""  icon={<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>}/>
 
+            <TextInput className="test-class" label="First name" id="firstName" type="text" placeholder="Tobias" />
+
+            <MultiSelect className="test-class" label="What’s your biological sex?" options={['Male', 'Female', 'I dont\'t want to share']} limit={1} />
+
+            <MultiSelect className="test-class" label="Four things you can't live without" options={['Car', 'Coke Zero', 'Donut', 'Music', 'Phone']} limit={4} />
+
+
+
             
 
-            <Dropdown dropdownLabel="What do you seek" label="Choose one option">
+            <Dropdown className="dropdałn" dropdownLabel="What do you seek" label="Choose one option">
               <option value="1">Wellness</option>
               <option value="2">Emotional support</option>
               <option value="3">A hug</option>
