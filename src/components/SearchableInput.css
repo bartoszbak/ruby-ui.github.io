@@ -1,0 +1,145 @@
+/* Container for the entire searchable list */
+.searchable-list-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  /* Styling the search input field */
+  .search-input {
+    width: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 32px 16px 12px 16px;
+    color: #000;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    line-height: 120%;
+    outline: none;
+  }
+  
+  .search-input:focus {
+    outline-offset: -2px;
+    outline: 2px solid #461E36;
+  }
+
+  .search-label{
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    z-index: 2;
+    line-height: 120%;
+    letter-spacing: 0.01rem;
+    font-weight: 500;
+    font-size: 13px;
+    color: rgba(46, 44, 42, 0.6);
+  }
+  
+  /* The dropdown list of filtered results */
+  .results-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    max-height: 240px;
+    overflow: overlay;
+    margin-top: 4px;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.16s cubic-bezier(0.47, 0, 0.23, 1.38), transform 0.16s cubic-bezier(0.47, 0, 0.23, 1.38);
+    visibility: hidden;
+  }  
+
+  .searchable-list-container.above .results-list {
+    bottom: 100%;
+    transform-origin: bottom;
+    top: auto;
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+
+  .results-list.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .results-list.animating {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  /* Individual list items */
+  .list-item   {
+    padding: 8px 10px;
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    color: rgb(46, 44, 42);
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: white;
+  }
+  
+/* Hover effect for list items */
+.list-item:hover,
+.list-item.highlighted {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.list-item.highlighted:focus{
+  outline-offset: -2px;
+  outline: 2px solid #461E36;
+}
+
+
+.no-results {
+  padding: 10px 12px;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  color: rgba(46, 44, 42, 0.6);
+}
+
+/* Hide scrollbar for webkit browsers (e.g., Chrome, Safari) */
+.results-list::-webkit-scrollbar {
+    width: 16px;
+    height: 8px;
+}
+
+.results-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 4px;
+  border: 4px solid #ffffff;
+  border-radius: 10px;
+}
+
+.results-list::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+/* Smooth transition for when the dropdown closes or opens */
+.results-list.animating {
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Open state for the dropdown */
+.results-list.open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}

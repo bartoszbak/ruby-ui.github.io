@@ -26,7 +26,7 @@ function ViewExample() {
                 <TextInput className="test-class" autocomplete="given-name" label="First name" id="firstName" type="text" placeholder="Tobias" />
                 <TextInput className="test-class" autocomplete="family-name" label="Last name" id="firstName" type="text" placeholder="Kepler" />
                 <MultiSelect className="test-class" label="What’s your biological sex?" options={['Male', 'Female', 'I dont\'t want to share']} limit={1} />
-                <MultiSelect className="test-class" label="Four things you can't live without" options={['Car', 'Coke Zero', 'Donut', 'Music', 'Phone']} limit={4} />
+                {/* <MultiSelect className="test-class" label="Four things you can't live without" options={['Car', 'Coke Zero', 'Donut', 'Music', 'Phone']} limit={4} /> */}
                 <TextInput className="test-class" autocomplete="bday-year" label="Year you were born?" pattern="\d*" name="year" min="1920" max="9999" placeholder="ex. 1972" type='number' />
                 <TextInput className="test-class" autocomplete="address-level2" label="Where are you based?"  id="firstName" type="text" placeholder="Type to search" />
 
@@ -36,7 +36,7 @@ function ViewExample() {
                     <option value="3">A hug</option>
                 </Dropdown>
 
-                <Button className="size-b solid" label="New appointment" />
+                <Button className="size-b solid" label="Continue" link="/view-example-2" />
             </div>
         </div>
 

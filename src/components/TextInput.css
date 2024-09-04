@@ -26,7 +26,8 @@
     top: 12px;
     left: 16px;
     font-size: 13px;
-    letter-spacing: 0.024rem;
+    font-weight: 500;
+    letter-spacing: 0.01rem;
     color: rgba(46, 44, 42, 0.6);
     line-height: 100%;
     pointer-events: none;

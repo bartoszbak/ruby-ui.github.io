@@ -47,7 +47,10 @@
     outline: 2px solid #461E36  ;
   }
 
-    .multiSelect .pill:hover,
+    .multiSelect .pill:hover{
+        border-color: rgba(0, 0, 0, 0.2);
+    }
+
     .multiSelect .pill.selected {
         background: none;
         color: #000;

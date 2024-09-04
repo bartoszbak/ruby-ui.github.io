@@ -6,6 +6,8 @@ import Button from './components/Button';
 import Dropdown from './components/Dropdown';
 import MultiSelect from './components/MultiSelect';
 import TextInput from './components/TextInput';
+import Toggle from './components/Toggle';
+import SearchableInput from './components/SearchableInput';
 
 function ComponentList() {
   return (
@@ -42,6 +44,10 @@ function ComponentList() {
             <MultiSelect className="test-class" label="What’s your biological sex?" options={['Male', 'Female', 'I dont\'t want to share']} limit={1} />
 
             <MultiSelect className="test-class" label="Four things you can't live without" options={['Car', 'Coke Zero', 'Donut', 'Music', 'Phone']} limit={4} />
+
+            <SearchableInput className="test-class" label="In which indsutry do you work?" />
+
+            <Toggle initialState="off" label="This is a very important checkmark" className="test-class" disabled={false} />
 
 
 

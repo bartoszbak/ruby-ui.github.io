@@ -1,0 +1,67 @@
+/* Toggle container */
+.toggle-container {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Base styles for the toggle switch */
+  .toggle-box {
+    width: 32px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #ccc;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .toggle-box:focus{
+    outline-offset: 2px;
+    outline: 2px solid #461E36;
+  }
+  
+  .toggle-box.on {
+    background-color: #4caf50; /* Green when on */
+  }
+  
+  .toggle-box.off {
+    background-color: rgba(0,0,0,0.2)
+  }
+  
+  /* Disabled toggle styles */
+  .toggle-container.disabled .toggle {
+    background-color: #e0e0e0; /* Gray when disabled */
+    cursor: not-allowed;
+  }
+  
+  /* Toggle thumb */
+  .toggle-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 20px;
+    background-color: white;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: left 0.3s ease;
+  }
+  
+  .toggle-box.on .toggle-thumb {
+    left: calc(100% - 16px); /* Move thumb to right when on */
+  }
+  
+  .toggle-box.off .toggle-thumb {
+    left: 4px; /* Move thumb to left when off */
+  }
+
+  .toggle-label{
+    font-size: 15px;
+    font-weight: 500;
+  }

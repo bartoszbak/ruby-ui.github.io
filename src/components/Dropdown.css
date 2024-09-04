@@ -1,4 +1,5 @@
-.dropdown{
+/* Basic dropdown styling */
+.dropdown {
   margin-bottom: 1rem;
   position: relative;
   width: 100%;
@@ -8,7 +9,7 @@
   position: absolute;
   top: 12px;
   left: 16px;
-  z-index: 2;
+  z-index: 0;
   line-height: 120%;
   letter-spacing: 0.01rem;
   font-weight: 500;
@@ -16,108 +17,42 @@
   color: rgba(46, 44, 42, 0.6);
 }
 
-.dropdown-btn {
-  position: relative;
+.native-dropdown {
   width: 100%;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 32px 16px 12px 16px;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  line-height: 120%;
+  outline: none;
+  appearance: none; /* Removes the default dropdown arrow */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
 }
-    
-  .open .dropdown-toggle,
-  .dropdown-toggle:focus-visible{
-    outline-offset: -2px;
-    outline: 2px solid #461E36;
-  }
-  
-  .dropdown-toggle {
-    transition: all 0.16s ease;
-    padding: 32px 16px 12px 16px;
-    background-color: #fff;
-    border: none;
-    border-radius: 10px;
-    color: #000;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.02rem;
-    cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    line-height: 120%;
-    display: flex;
-    align-content: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 1rem;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    justify-content: space-between;
-    width: 100%;
-  }
 
-  .dropdown-icon{
-    position: absolute;
-    top: calc(50% - 10px);
-    right: 16px;
-    padding:0;
-    margin: 0;
-    height: 20px;
-    width: 20px;
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 100%;
-    min-width: max-content;
-    margin-top: 5px;
-    padding: 2px 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    z-index: 1000;
-    box-sizing: border-box;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.16s cubic-bezier(0.47, 0, 0.23, 1.38), transform 0.16s cubic-bezier(0.47, 0, 0.23, 1.38);
-  }  
+/* Adding a custom chevron icon using a pseudo-element (for additional customization if needed) */
+.dropdown::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none; /* Ensures the custom icon doesn't block the dropdown functionality */
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNSw4TDkuMzc1MzEsMTEuNTAwMkMxMC4yNDA1MiwxMS44NTY0IDEwLjc1OTUyLDExLjg1NjQgMTEuMDI0NywxMS41MDAyTDE1LDgiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD48L3N2Zz4='); /* Your custom SVG icon as base64 */
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none; /* Make sure this does not block clicks */
+}
 
-  .dropdown-menu.open {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .dropdown-menu.closing {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  
-  .dropdown-menu.above {
-    bottom: 100%;
-    transform-origin: bottom;
-    top: auto;
-    margin-top: 0;
-    margin-bottom: 5px;
-  }
-  
-  .dropdown-item {
-    transition: all 0.16s ease;
-    padding: 8px 12px;
-    display: block;
-    font-weight: 500;
-    font-size: 15px;
-    text-decoration: none;
-    color: rgb(46, 44, 42);
-    margin: 2px;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: white;
-  }
-
-  .dropdown-item:active,
-  .dropdown-item:focus{
-    outline-offset: 0px;
-    outline: 2px solid #461E36;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #f0f0f0;
-  }
+.native-dropdown:focus {
+        outline-offset: -2px;
+        outline: 2px solid #461E36;
+}
