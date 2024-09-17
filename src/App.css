@@ -1,49 +1,187 @@
-*{
-font-family: 'Inter Variable', -apple-system, sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 13px;
-line-height: 135%;
-font-variation-settings: 'opsz' 32;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'InterVariable';
+  src: url('/public/fonts/InterVariable.woff2') format('woff2');
 }
 
-.App {
-  text-align: center;
+:root {
+
+  /* Base colors */
+  --ruby: rgb(70, 30, 54);      /* #461E36 */
+  --collar: rgb(150, 200, 255); /* #96C8FF */
+  --fartuch: rgb(6, 118, 129);  /* #067681 */
+  --pantera: rgb(255, 163, 152);/* #FFA398 */
+  --black: rgb(46, 44, 42);     /* #2E2C2A */
+  --white: rgb(255, 255, 255);  /* #FFFFFF */
+
+  /* Ruby color expansions in each direction */
+  --ruby-light-700: rgb(240, 230, 240);
+  --ruby-light-600: rgb(213, 180, 200);
+  --ruby-light-500: rgb(184, 149, 171);
+  --ruby-light-400: rgb(156, 118, 142);
+  --ruby-light-300: rgb(127, 87, 113);
+  --ruby-light-200: rgb(98, 56, 83);
+  --ruby-light-100: rgb(85, 44, 70);
+  --ruby-dark-100: rgb(63, 27, 49);
+  --ruby-dark-200: rgb(56, 24, 45);
+  --ruby-dark-300: rgb(43, 18, 36);
+  --ruby-dark-400: rgb(30, 11, 24);
+  --ruby-dark-500: rgb(16, 6, 12);
+  --ruby-dark-600: rgb(10, 4, 8);
+  --ruby-dark-700: rgb(5, 2, 4);
+
+  /* Transparent tint tokens for ruby color */
+  --ruby-tint-100: rgba(70, 30, 54, 0.1);  /* 10% opacity */
+  --ruby-tint-200: rgba(70, 30, 54, 0.2);  /* 20% opacity */
+  --ruby-tint-300: rgba(70, 30, 54, 0.3);  /* 30% opacity */
+  --ruby-tint-400: rgba(70, 30, 54, 0.4);  /* 40% opacity */
+  --ruby-tint-500: rgba(70, 30, 54, 0.5);  /* 50% opacity */
+  --ruby-tint-600: rgba(70, 30, 54, 0.6);  /* 60% opacity */
+  --ruby-tint-700: rgba(70, 30, 54, 0.7);  /* 70% opacity */
+  --ruby-tint-800: rgba(70, 30, 54, 0.8);  /* 80% opacity */
+  --ruby-tint-900: rgba(70, 30, 54, 0.9);  /* 90% opacity */
+
+/* Collar color expansions in each direction */
+  --collar-light-700: rgb(240, 245, 255);
+  --collar-light-600: rgb(220, 230, 255);
+  --collar-light-500: rgb(200, 215, 255);
+  --collar-light-400: rgb(180, 200, 255);
+  --collar-light-300: rgb(165, 190, 255);
+  --collar-light-200: rgb(150, 180, 255);
+  --collar-light-100: rgb(135, 170, 245);
+  --collar-dark-100: rgb(135, 180, 230);
+  --collar-dark-200: rgb(120, 160, 210);
+  --collar-dark-300: rgb(100, 140, 185);
+  --collar-dark-400: rgb(80, 120, 160);
+  --collar-dark-500: rgb(60, 100, 130);
+  --collar-dark-600: rgb(40, 80, 110);
+  --collar-dark-700: rgb(20, 60, 90); 
+
+  /* Transparent tint tokens for collar */
+  --collar-tint-100: rgba(150, 200, 255, 0.1);  /* 10% opacity */
+  --collar-tint-200: rgba(150, 200, 255, 0.2);  /* 20% opacity */
+  --collar-tint-300: rgba(150, 200, 255, 0.3);  /* 30% opacity */
+  --collar-tint-400: rgba(150, 200, 255, 0.4);  /* 40% opacity */
+  --collar-tint-500: rgba(150, 200, 255, 0.5);  /* 50% opacity */
+  --collar-tint-600: rgba(150, 200, 255, 0.6);  /* 60% opacity */
+  --collar-tint-700: rgba(150, 200, 255, 0.7);  /* 70% opacity */
+  --collar-tint-800: rgba(150, 200, 255, 0.8);  /* 80% opacity */
+  --collar-tint-900: rgba(150, 200, 255, 0.9);  /* 90% opacity */
+
+/* Fartuch color expansions in each direction */
+  --fartuch-light-700: rgb(220, 245, 247);
+  --fartuch-light-600: rgb(200, 230, 233);
+  --fartuch-light-500: rgb(180, 215, 218);
+  --fartuch-light-400: rgb(160, 200, 203);
+  --fartuch-light-300: rgb(140, 180, 185);
+  --fartuch-light-200: rgb(120, 160, 165);
+  --fartuch-light-100: rgb(100, 140, 145);
+  --fartuch-dark-100: rgb(5, 105, 115);
+  --fartuch-dark-200: rgb(4, 90, 100);
+  --fartuch-dark-300: rgb(3, 75, 85);
+  --fartuch-dark-400: rgb(2, 60, 70);
+  --fartuch-dark-500: rgb(1, 45, 55);
+  --fartuch-dark-600: rgb(1, 35, 45);
+  --fartuch-dark-700: rgb(0, 25, 35); 
+
+  /* Transparent tint tokens for fartuch */
+  --fartuch-tint-100: rgba(6, 118, 129, 0.1);  /* 10% opacity */
+  --fartuch-tint-200: rgba(6, 118, 129, 0.2);  /* 20% opacity */
+  --fartuch-tint-300: rgba(6, 118, 129, 0.3);  /* 30% opacity */
+  --fartuch-tint-400: rgba(6, 118, 129, 0.4);  /* 40% opacity */
+  --fartuch-tint-500: rgba(6, 118, 129, 0.5);  /* 50% opacity */
+  --fartuch-tint-600: rgba(6, 118, 129, 0.6);  /* 60% opacity */
+  --fartuch-tint-700: rgba(6, 118, 129, 0.7);  /* 70% opacity */
+  --fartuch-tint-800: rgba(6, 118, 129, 0.8);  /* 80% opacity */
+  --fartuch-tint-900: rgba(6, 118, 129, 0.9);  /* 90% opacity */
+
+/* Pantera color expansions in each direction */
+  --pantera-light-700: rgb(255, 230, 226);
+  --pantera-light-600: rgb(255, 215, 210);
+  --pantera-light-500: rgb(255, 200, 195);
+  --pantera-light-400: rgb(255, 185, 180);
+  --pantera-light-300: rgb(255, 170, 165);
+  --pantera-light-200: rgb(240, 155, 150);
+  --pantera-light-100: rgb(230, 140, 135);
+  --pantera-dark-100: rgb(230, 145, 135);
+  --pantera-dark-200: rgb(210, 125, 115);
+  --pantera-dark-300: rgb(190, 105, 95);
+  --pantera-dark-400: rgb(170, 85, 75);
+  --pantera-dark-500: rgb(150, 65, 55);
+  --pantera-dark-600: rgb(130, 45, 35);
+  --pantera-dark-700: rgb(110, 25, 15);
+
+  /* Transparent tint tokens for pantera */
+  --pantera-tint-100: rgba(255, 163, 152, 0.1);  /* 10% opacity */
+  --pantera-tint-200: rgba(255, 163, 152, 0.2);  /* 20% opacity */
+  --pantera-tint-300: rgba(255, 163, 152, 0.3);  /* 30% opacity */
+  --pantera-tint-400: rgba(255, 163, 152, 0.4);  /* 40% opacity */
+  --pantera-tint-500: rgba(255, 163, 152, 0.5);  /* 50% opacity */
+  --pantera-tint-600: rgba(255, 163, 152, 0.6);  /* 60% opacity */
+  --pantera-tint-700: rgba(255, 163, 152, 0.7);  /* 70% opacity */
+  --pantera-tint-800: rgba(255, 163, 152, 0.8);  /* 80% opacity */
+  --pantera-tint-900: rgba(255, 163, 152, 0.9);  /* 90% opacity */
+
+/* Black color expansions in each direction */
+   --black-light-950: rgb(250, 249, 248);  
+   --black-light-900: rgb(245, 244, 243);
+   --black-light-800: rgb(235, 234, 233);  
+   --black-light-700: rgb(230, 229, 228);  
+   --black-light-600: rgb(210, 209, 207);
+   --black-light-500: rgb(190, 189, 187);
+   --black-light-400: rgb(170, 169, 167);
+   --black-light-300: rgb(150, 149, 147);
+   --black-light-200: rgb(130, 129, 127);
+   --black-light-100: rgb(110, 109, 107);
+   --black-dark-100: rgb(41, 39, 37);
+   --black-dark-200: rgb(36, 34, 32);
+   --black-dark-300: rgb(31, 29, 27);
+   --black-dark-400: rgb(26, 24, 22);
+   --black-dark-500: rgb(21, 19, 17);
+   --black-dark-600: rgb(16, 14, 12);
+   --black-dark-700: rgb(11, 9, 7);
+   --black-dark-800: rgb(8, 6, 5);
+   --black-dark-900: rgb(5, 3, 2);  
+   --black-dark-950: rgb(2, 1, 1);  
+
+  /* Transparent tint tokens for black */
+  --black-tint-30: rgba(46, 44, 42, 0.03);  /* 3% opacity */
+  --black-tint-50: rgba(46, 44, 42, 0.05);  /* 5% opacity */
+  --black-tint-100: rgba(46, 44, 42, 0.1);  /* 10% opacity */
+  --black-tint-150: rgba(46, 44, 42, 0.15); /* 15% opacity */
+  --black-tint-200: rgba(46, 44, 42, 0.2);  /* 20% opacity */
+  --black-tint-300: rgba(46, 44, 42, 0.3);  /* 30% opacity */
+  --black-tint-400: rgba(46, 44, 42, 0.4);  /* 40% opacity */
+  --black-tint-500: rgba(46, 44, 42, 0.5);  /* 50% opacity */
+  --black-tint-600: rgba(46, 44, 42, 0.6);  /* 60% opacity */
+  --black-tint-700: rgba(46, 44, 42, 0.7);  /* 70% opacity */
+  --black-tint-800: rgba(46, 44, 42, 0.8);  /* 80% opacity */
+  --black-tint-900: rgba(46, 44, 42, 0.9);  /* 90% opacity */
+
+  /* Transparent tint tokens for white */
+  --white-tint-30: rgba(255, 255, 255, 0.03);  /* 3% opacity */
+  --white-tint-50: rgba(255, 255, 255, 0.05);  /* 5% opacity */
+  --white-tint-100: rgba(255, 255, 255, 0.1);  /* 10% opacity */
+  --white-tint-150: rgba(255, 255, 255, 0.15); /* 15% opacity */
+  --white-tint-200: rgba(255, 255, 255, 0.2);  /* 20% opacity */
+  --white-tint-300: rgba(255, 255, 255, 0.3);  /* 30% opacity */
+  --white-tint-400: rgba(255, 255, 255, 0.4);  /* 40% opacity */
+  --white-tint-500: rgba(255, 255, 255, 0.5);  /* 50% opacity */
+  --white-tint-600: rgba(255, 255, 255, 0.6);  /* 60% opacity */
+  --white-tint-700: rgba(255, 255, 255, 0.7);  /* 70% opacity */
+  --white-tint-800: rgba(255, 255, 255, 0.8);  /* 80% opacity */
+  --white-tint-900: rgba(255, 255, 255, 0.9);  /* 90% opacity */
+
+
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html, body {
+  font-family: 'InterVariable', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 135%;
+  font-variation-settings: 'opsz' 32;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

@@ -29,7 +29,7 @@ const SearchableInput = ({ label, className }) => {
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Calculate dropdown position based on available space
+  // Calculatee dropdown position based on available space
   const calculateDropdownPosition = () => {
     const inputRect = inputRef.current.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
