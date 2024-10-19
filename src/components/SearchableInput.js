@@ -1,17 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './SearchableInput.css'; // Assuming you create a CSS file for styling
+import './SearchableInput.css';
 
 const SearchableInput = ({ label, className }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isListOpen, setIsListOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false); // For controlling animation
-  const [highlightedIndex, setHighlightedIndex] = useState(-1);
-  const [dropdownPosition, setDropdownPosition] = useState('below'); // Position dropdown "above" or "below"
-  const inputRef = useRef(null);
-  const listRef = useRef(null);
-
-  // Example array of cities with countries
-  const dataArray = [
+  const options = [
     { id: 1, name: 'New York, United States' },
     { id: 2, name: 'Tokyo, Japan' },
     { id: 3, name: 'Paris, France' },
@@ -24,90 +15,66 @@ const SearchableInput = ({ label, className }) => {
     { id: 10, name: 'Beijing, China' },
   ];
 
-  // Filter the array based on the search term
-  const filteredData = dataArray.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isListOpen, setIsListOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [dropdownPosition, setDropdownPosition] = useState('below'); // Set initial dropdown position as 'below'
+  const inputRef = useRef(null);
+  const listRef = useRef(null);
+
+  // Filter options based on search term
+  const filteredOptions = options.filter(
+    (item) => item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Calculatee dropdown position based on available space
-  const calculateDropdownPosition = () => {
-    const inputRect = inputRef.current.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    const spaceBelow = viewportHeight - inputRect.bottom;
-    const spaceAbove = inputRect.top;
-
-    if (spaceBelow < 200 && spaceAbove > spaceBelow) {
-      setDropdownPosition('above');
-    } else {
-      setDropdownPosition('below');
-    }
+  // Handle input focus to open the dropdown
+  const handleInputFocus = () => {
+    calculateDropdownPosition();
+    setIsListOpen(true);
   };
 
-  // Close dropdown when clicking outside
-  const handleClickOutside = (e) => {
-    if (inputRef.current && !inputRef.current.contains(e.target)) {
-      setIsAnimating(true);
+  // Handle option selection
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setSearchTerm(option.name);
+    setIsListOpen(false); // Close dropdown
+  };
+
+  // Close dropdown when focus leaves the component (input or dropdown)
+  const handleBlur = (e) => {
+    const relatedTarget = e.relatedTarget;
+    if (!inputRef.current.contains(relatedTarget)) {
       setTimeout(() => {
         setIsListOpen(false);
-        setIsAnimating(false);
-      }, 100);
-      setHighlightedIndex(-1);
+        setHighlightedIndex(-1);
+      }, 150); // Slight delay to allow option selection
     }
   };
 
-  // Handle input focus (open dropdown)
-  const handleInputFocus = () => {
-    if (!isListOpen) {
-      calculateDropdownPosition(); // Calculate position when opening
-      setIsAnimating(true); // Trigger intro animation
-      setIsListOpen(true);
+  // Handle outside click to close dropdown
+  const handleClickOutside = (e) => {
+    if (inputRef.current && !inputRef.current.contains(e.target)) {
+      setIsListOpen(false);
     }
   };
 
-  // Handle blur event (close the dropdown on focus loss)
-  const handleBlur = (e) => {
-    setTimeout(() => {
-      if (!inputRef.current.contains(document.activeElement)) {
-        setIsAnimating(true); // Trigger outro animation
-        setTimeout(() => {
-          setIsListOpen(false);
-          setIsAnimating(false); // Reset animation state
-        }, 100); // Time matches the CSS animation duration
-        setHighlightedIndex(-1); // Reset highlight on blur
-      }
-    }, 100);
-  };
-
-  // Handle closing with the Escape key
+  // Handle keyboard navigation and closing dropdown with Esc
   const handleKeyDown = (e) => {
     if (isListOpen) {
-      if (e.key === 'Escape') {
-        setIsAnimating(true); // Trigger outro animation
-        setTimeout(() => {
-          setIsListOpen(false);
-          setIsAnimating(false); // Reset animation state
-        }, 100);
-        setHighlightedIndex(-1); // Reset highlight
-      } else if (e.key === 'ArrowDown' || (e.key === 'Tab' && !e.shiftKey)) {
-        e.preventDefault(); // Prevent default Tab behavior to enable list navigation
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
         setHighlightedIndex((prevIndex) =>
-          Math.min(prevIndex + 1, filteredData.length - 1)
+          Math.min(prevIndex + 1, filteredOptions.length - 1)
         );
-      } else if (e.key === 'ArrowUp' || (e.key === 'Tab' && e.shiftKey)) {
-        e.preventDefault(); // Prevent default Shift + Tab behavior to enable list navigation
-        setHighlightedIndex((prevIndex) =>
-          Math.max(prevIndex - 1, 0)
-        );
-      } else if (e.key === 'Enter') {
-        if (highlightedIndex >= 0 && highlightedIndex < filteredData.length) {
-          setSearchTerm(filteredData[highlightedIndex].name);
-          setIsAnimating(true); // Trigger outro animation
-          setTimeout(() => {
-            setIsListOpen(false);
-            setIsAnimating(false); // Reset animation state
-          }, 100);
-          setHighlightedIndex(-1);
-        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setHighlightedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+      } else if (e.key === 'Enter' && highlightedIndex >= 0) {
+        handleOptionSelect(filteredOptions[highlightedIndex]);
+      } else if (e.key === 'Escape') {
+        setIsListOpen(false);  // Close dropdown on Escape
+        setHighlightedIndex(-1);  // Reset highlight index
       }
     }
   };
@@ -133,12 +100,27 @@ const SearchableInput = ({ label, className }) => {
     };
   }, []);
 
+  // Calculate whether dropdown should be above or below
+  const calculateDropdownPosition = () => {
+    const inputRect = inputRef.current.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const dropdownHeight = 280; // Max height for the dropdown list
+
+    const spaceBelow = viewportHeight - inputRect.bottom;
+    const spaceAbove = inputRect.top;
+
+    if (spaceBelow < dropdownHeight && spaceAbove > spaceBelow) {
+      setDropdownPosition('above'); // Not enough space below, open above
+    } else {
+      setDropdownPosition('below'); // Enough space, open below
+    }
+  };
+
   return (
     <div
-      className={`searchable-list-container ${className} ${
-        isListOpen ? 'open' : ''
-      } ${dropdownPosition}`} // Apply the "above" or "below" class based on position
+      className={`searchable-list-container ${className}`}
       ref={inputRef}
+      onBlur={handleBlur}
     >
       {label && (
         <label htmlFor="search-input" className="search-label">
@@ -149,50 +131,42 @@ const SearchableInput = ({ label, className }) => {
         id="search-input"
         type="text"
         autoComplete="off"
-        placeholder="Type a city..."
+        placeholder="Type to search..."
         value={searchTerm}
         onChange={(e) => {
           setSearchTerm(e.target.value);
-          if (!isListOpen) handleInputFocus(); // Open dropdown while typing
+          calculateDropdownPosition(); // Recalculate dropdown position on every change
+          setIsListOpen(true); // Open dropdown while typing
         }}
         onFocus={handleInputFocus}
-        onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         className="search-input"
       />
-      {/* Dropdown is always rendered but visibility is controlled */}
-      <ul
-        className={`results-list ${isAnimating ? 'animating' : ''} ${
-          isListOpen ? 'open' : ''
-        }`}
-        ref={listRef}
-      >
-        {filteredData.length > 0 ? (
-          filteredData.map((item, index) => (
+
+      {isListOpen && filteredOptions.length > 0 && (
+        <ul
+          className={`results-list ${dropdownPosition}`} // Apply above or below class
+          ref={listRef}
+        >
+          {filteredOptions.map((option, index) => (
             <li
-              key={item.id}
-              className={`list-item ${
-                index === highlightedIndex ? 'highlighted' : ''
-              }`}
+              key={option.id}
+              className={`list-item ${index === highlightedIndex ? 'highlighted' : ''}`}
               onMouseEnter={() => setHighlightedIndex(index)}
               onMouseLeave={() => setHighlightedIndex(-1)}
-              onMouseDown={() => {
-                setSearchTerm(item.name);
-                setIsAnimating(true); // Trigger outro animation
-                setTimeout(() => {
-                  setIsListOpen(false);
-                  setIsAnimating(false); // Reset animation state
-                }, 100);
-                setHighlightedIndex(-1);
-              }}
+              onMouseDown={() => handleOptionSelect(option)}
             >
-              {item.name}
+              {option.name}
             </li>
-          ))
-        ) : (
+          ))}
+        </ul>
+      )}
+
+      {isListOpen && filteredOptions.length === 0 && (
+        <ul className={`results-list ${dropdownPosition}`} ref={listRef}>
           <li className="list-item no-results">No results found</li>
-        )}
-      </ul>
+        </ul>
+      )}
     </div>
   );
 };

@@ -1,162 +1,120 @@
 .btn {
-    font-weight: 500;
     cursor: pointer;
-    border: none;
     transition: all 0.16s ease;
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    border-radius: 10px;
-    max-height: 44px;
     box-sizing: border-box;
-  }
-
-  .btn .label{
-    font-family: 'InterVariable', sans-serif;
-    font-variation-settings: 'opsz' 32;
-    font-style: normal;
-    line-height: 120%;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.02rem;
-  }
-
-.icon-label{
-  max-height: none;
-  min-height: fit-content;
-  display: flex;
-  line-height: 100%;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  box-shadow: none;
-  gap: 0.25rem;
-}
-
-  .icon-label .icon{
-    display: inherit; 
-  }
-
-.icon{
-  max-height: none;
-  min-height: fit-content;
-  display: flex;
-  line-height: 100%;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  box-shadow: none;
-  gap: 0.25rem;
-}
-
-/* Button type Soild / Soft */
-
-.btn.solid{
-  background-color: #461E36;
-  border: 1px solid rgba(0,0,0,0.1);
-  color: #fff;
-}
-
-.btn.soft{
-  background-color: #ffffff;
-  border: 1px solid rgba(0,0,0,0.1);
-  color: rgb(46, 44, 42);
-}
-
-/* Button states */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: none;}
 
 .btn:focus-visible{
   outline-offset: 2px;
-  outline: 2px solid #461E36  ;
-}
+  outline: 2px solid #461E36;}
 
 .btn:active{
   /* transform: translateY(1px); */
-  transform: scale(0.98);
-  border: 1px solid rgba(0,0,0,0.24);
+  transform: scale(0.98);}
+
+/* Button type  */
+
+.btn-label{
+  font-family: var(--ui-ff);
+  font-variation-settings: var(--ui-fvs);
+  font-weight: var(--ui-fw-m);
+  letter-spacing: 0.02rem;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;}
+
+.btn-icon{display: inline-flex;}
+
+.btn-icon-label{gap: 10px;}
+
+/* Type */
+
+/* Button shape */
+
+  .btn-round{border-radius: 100px; }
+  .btn-square{border-radius: 14px;}
+  .btn-square-radius-s{border-radius: 10px;}
+
+/* Button type Soild / Soft / Ghost */
+
+.btn-solid{
+  background-color: var(--ruby);
+  color: #fff;}
+
+.btn-solid:hover{background-color: var(--ruby-light-200);}
+
+.btn-soft{
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: rgba(0,0,0,0.12);
+  color: rgb(46, 44, 42);}
+
+.btn-soft:hover{border-color: rgba(0,0,0,0.24);}
+
+.btn-ghost{
+  min-height: fit-content;
+  display: flex;
+  line-height: 100%;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  background: none;
 }
 
-.btn.solid:hover {
-  background-color: #FFA398;
-}
-
-.btn.solid:active{
-  border: 1px solid rgba(0,0,0,0.24);
-}
-
-.btn.soft:hover {
-  border: 1px solid rgba(0,0,0,0.24);
-}
-
-.btn.soft:active{
-  border: 1px solid rgba(0,0,0,0.24);
-}
-
-.icon:hover,
-.icon-label:hover{
-  background-color: rgba(0,0,0,0.04);
-}
-
-.icon:active,
-.icon-label:active{
-  border: none
+.btn-ghost:hover{
+  background-color: var(--black-tint-50);
 }
 
 
-/* Button size */
+/* Button sizes */
 
-.btn.size-s,
-.icon-label.size-s{
-  padding: 4px 8px;
-  min-height: 32px;
-}
+.btn-size-l{padding: 12px 20px;}
+
+  .btn-size-l .btn-label{
+    font-size: var(--ui-body-fs);
+    line-height: var(--ui-body-lh); }
   
-  .icon.size-s svg,
-  .icon-label.size-s svg{
+  .btn-icon.btn-size-l,
+  .btn-icon.btn-size-l{padding: 12px;}
+
+  .btn-icon-label.btn-size-l svg,
+  .btn-icon.btn-size-l svg{
+    height: 24px;
+    width: 24px;
+  }
+
+.btn-size-n{padding: 8px 16px;}
+
+  .btn-size-n .btn-label{
+    font-size: var(--ui-body-fs);
+    line-height: var(--ui-body-lh); }
+  
+  .btn-icon.btn-size-n,
+  .btn-icon.btn-size-n{padding: 8px; }
+  
+  .btn-icon-label.btn-size-n svg,
+  .btn-icon.btn-size-n svg{
+    height: 24px;
+    width: 24px;
+  }
+
+.btn-size-s{padding: 6px 10px;}
+
+  .btn-size-s .btn-label{
+    font-size: var(--ui-s-fs);
+    line-height: var(--ui-s-lh);}
+
+  .btn-icon.btn-size-s,
+  .btn-icon.btn-size-s{padding: 6px;}
+
+  .btn-icon-label.btn-size-s svg,
+  .btn-icon.btn-size-s svg{
     height: 20px;
     width: 20px;
   }
 
-  .icon.size-s{
-    padding: 4px;
-    min-height: 32px;
-    min-width: 32px;
-  }
 
-.btn.size-n,
-.icon-label.size-n{
-  padding: 8px 12px;
-  min-height: 32px;
-}
-
-  .icon.size-n svg,
-  .icon-label.size-n svg{
-    height: 20px;
-    width: 20px;
-  }
-
-  .icon.size-n{
-    padding: 8px;
-  }
-
-.btn.size-b,
-.icon-label.size-b{
-  padding: 12px 16px;
-  min-height: 40px;
-  gap: 8px;
-}
-
-  .icon.size-b svg,
-  .icon-label.size-b svg{
-    height: 20px;
-    width: 20px;
-  }
-
-  .icon.size-b{
-    padding: 12px;
-  }
 

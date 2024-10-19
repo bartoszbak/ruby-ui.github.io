@@ -23,6 +23,8 @@ function ViewExample() {
 
                 {/* add autocomplete support */}
 
+                
+
                 <TextInput className="test-class" autocomplete="given-name" label="First name" id="firstName" type="text" placeholder="Tobias" />
                 <TextInput className="test-class" autocomplete="family-name" label="Last name" id="firstName" type="text" placeholder="Kepler" />
                 <MultiSelect className="test-class" label="What’s your biological sex?" options={['Male', 'Female', 'I dont\'t want to share']} limit={1} />
@@ -36,7 +38,13 @@ function ViewExample() {
                     <option value="3">A hug</option>
                 </Dropdown>
 
-                <Button className="size-b solid" label="Continue" link="/view-example-2" />
+                <Button
+                  label="Continue"
+                  variant={{ type: 'solid', size: 'large', shape: 'square' }}
+                  className="my-custom-button"
+                  // onClick={handleClick}
+                  link="/view-example-2"
+                />
             </div>
         </div>
 

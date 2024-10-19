@@ -12,12 +12,14 @@ code {
     monospace;
 }
 
-
-.navigator{
-  margin: 0.25rem 0.25rem 0 0.25rem ;
+.grid-title,
+.grid-navigator{
+  margin: 0;
+  padding: 0;;
 }
 
-.navigator a{
+.grid-title p,
+.grid-navigator a{
   font-size: 14px;
   background-color: #f9f9f9;
   padding: 1.25rem;
@@ -25,6 +27,10 @@ code {
   border-radius: 5px;
 } 
 
+.grid-title p{
+  margin: 0;
+  background-color: #fff;
+}
 
 .two-col-grid{
   height: calc(100vh - 4.75rem);

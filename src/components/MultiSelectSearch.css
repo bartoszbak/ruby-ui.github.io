@@ -1,12 +1,12 @@
 /* Container for the entire searchable list */
-.searchable-list-container {
+.multi-select-container {
   position: relative;
-  width: 100%;
+  width: 380px;
   margin-bottom: 1rem;
 }
 
 /* Styling the search input field */
-.search-input {
+.multiselect-search-input {
   font-family: 'InterVariable', sans-serif;
   font-variation-settings: 'opsz' 32;
   font-size: 15px;
@@ -23,12 +23,12 @@
   outline: none;
 }
 
-.search-input:focus {
+.multiselect-search-input:focus {
   outline-offset: -2px;
   outline: 2px solid #461E36;
 }
 
-.search-label{
+.multiselect-search-label{
   position: absolute;
   top: 12px;
   left: 16px;
@@ -41,24 +41,24 @@
 }
 
 /* The dropdown list of filtered results */
-.results-list {
+.multiselect-results-list {
   position: absolute;
-  top: 100%;
+  top: auto;
   left: 0;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   width: 100%;
   max-height: 240px;
-  overflow-y: auto;
+  overflow: overlay;
+  z-index: 10;
   margin-top: 4px;
   padding: 8px;
-  box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  z-index: 10;
+  box-sizing: border-box;
 }
 
-.above.results-list {
+.above.multiselect-results-list {
   bottom: 100%;
   transform-origin: bottom;
   top: auto;
@@ -66,8 +66,14 @@
   margin-bottom: 4px;
 }
 
+/* When dropdown is open */
+.multiselect-results-list.open {
+  max-height: 240px; /* Allow space for list items */
+  opacity: 1;
+}
+
 /* Individual list items */
-.list-item   {
+.ms-list-item {
   padding: 8px 10px;
   display: block;
   font-weight: 500;
@@ -79,39 +85,75 @@
   background-color: white;
 }
 
-/* Hover effect for list items */
-.list-item:hover,
-.list-item.highlighted {
+.ms-list-item:hover,
+.ms-list-item.highlighted {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.list-item.highlighted:focus {
-  outline-offset: -2px;
-  outline: 2px solid #461E36;
-}
-
-/* Styling for no results */
-.no-results {
-  padding: 8px 10px;
+.ms-list-item.no-results {
   font-weight: 500;
   text-decoration: none;
   color: rgba(46, 44, 42, 0.6);
 }
 
+.selected-options{
+  margin: 12px 0;
+  display: flex;
+  gap: 4px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+}
 
+.selected-tag{
+  display: flex;
+  gap: 4px;
+  font-size: 14px;
+  padding: 8px 12px 8px 8px;
+  background-color: #f5f5f5;
+  border-radius: 100px;
+  align-items: center;
+  flex-direction: row;
+}
+
+.remove-tag{ 
+  border-radius: 100px;
+  line-height: 100%;
+  height: 16px;
+  font-size: 12px;
+  width: 16px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-tag:hover{
+  background: #fff;
+}
+
+.remove-tag:focus{
+  outline-offset: -calc();
+  outline: 2px solid #461E36;   
+}
+
+/* Hacks */
 
 /* Hide scrollbar for webkit browsers (e.g., Chrome, Safari) */
-.results-list::-webkit-scrollbar {
+.multiselect-results-list::-webkit-scrollbar {
   width: 16px;
   height: 8px;
 }
 
-.results-list::-webkit-scrollbar-thumb {
+.multiselect-results-list::-webkit-scrollbar-thumb {
   background-color: rgba(0,0,0,0.1);
   border: 4px solid #ffffff;
   border-radius: 10px;
 }
 
-.results-list::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+.multiselect-results-list::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0,0,0,0.2);
 }
